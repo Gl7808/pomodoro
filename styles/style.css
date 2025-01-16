@@ -1,0 +1,372 @@
+@charset "UTF-8";
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+}
+
+body {
+  font-size: clamp(16px, 1.25vw, 18px);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1.28;
+  background-color: var(--color-background-1);
+  color: var(--color-light-1);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: var(--color-accent-blue);
+}
+
+h2, h3, h4 {
+  font-weight: 600;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: clamp(63px, 5.5555555556vw, 80px);
+}
+
+h2 {
+  font-size: clamp(40px, 3.6111111111vw, 52px);
+}
+
+h3 {
+  font-size: clamp(22px, 1.875vw, 27px);
+}
+
+:root {
+  --color-light-1: #FFFFFF;
+  --color-light-2: #BCCBD6;
+  --color-accent-1: #00EAC7;
+  --color-accent-2: #0F3034;
+  --color-background-1: #111B24;
+  --color-background-2: #2F4252;
+  --color-background-3: #0F171F;
+  --color-background-4: #14202A;
+  --color-border-1: #1B2B38;
+  --font-family-base: "Inter", sans-serif;
+  --container-width: 1280px;
+  --container-padding-x: 32px;
+  --section-padding-y: 256px;
+  --border-radius: 8px;
+  --border-radius-small: 2px;
+  --border-radius-button: 48px;
+  --button-height: 36px;
+  --input-height: 40px;
+  --transition-duration: 0.3s;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+  Убираем внутренние отступы слева тегам списков,
+  у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+  Убираем внешние отступы body и двум другим тегам,
+  у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+  Убираем внешние отступы вертикали нужным тегам,
+  у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+  Убираем стандартный маркер маркированному списку,
+  у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+  Обнуляем вертикальные внешние отступы параграфа,
+  объявляем локальную переменную для внешнего отступа вниз,
+  чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+  Внешний отступ вниз для параграфа без атрибута class,
+  который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Упрощаем работу с изображениями
+ */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+  Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+}
+
+/**
+  Плавный скролл
+ */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+  Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+  Удаляем все анимации и переходы для людей,
+  которые предпочитают их не использовать
+ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.header__inner {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.header__logo {
+  font-size: 20px;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #00EAC7, 1px 1px 5px #0075ea, 1px 1px 15px #ffffff;
+}
+.header__navigation-list {
+  display: flex;
+  gap: 20px;
+}
+.header__navigation-item {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.section {
+  margin-top: 100px;
+}
+
+.r {
+  color: var(--color-accent-red);
+}
+
+.g {
+  color: var(--color-succsess);
+}
+
+.b {
+  color: var(--color-accent-blue);
+}
+
+.gem__list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.gem__list-item {
+  padding: 3px;
+  border: 1px solid var(--color-dark-700);
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--color-light-2);
+}
+.title-icon {
+  color: var(--color-light-2);
+  margin-right: 10px;
+}
+
+.note__title {
+  margin-bottom: 20px;
+  color: var(--color-light-2);
+}
+.note__title-icon {
+  color: var(--color-light-2);
+  margin-right: 10px;
+}
+.note__description {
+  background-color: var(--color-background-4);
+  padding: 26px 56px 27px 56px;
+}
+
+.equip__items {
+  --col-size: 4rem;
+  --border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, var(--col-size)));
+  grid-gap: 0.5rem;
+  grid-template-areas: "Weapon Weapon . Helm Helm . Offhand Offhand" "Weapon Weapon . Helm Helm . Offhand Offhand" "Weapon Weapon . BodyArmour BodyArmour Amulet Offhand Offhand" "Weapon Weapon RingL BodyArmour BodyArmour RingR Offhand Offhand" ". Gloves Gloves BodyArmour BodyArmour Boots Boots ." ". Gloves Gloves Belt Belt Boots Boots ." ". flasks1 flasks2 flasks3 flasks4 flasks5 flasks6 ." ". flasks1 flasks2 flasks3 flasks4 flasks5 flasks6 .";
+}
+.equip__items-weapon1 {
+  grid-area: Weapon;
+}
+.equip__items-weapon2 {
+  grid-area: Offhand;
+}
+.equip__items-helmet {
+  grid-area: Helm;
+}
+.equip__items-ring1 {
+  grid-area: RingL;
+}
+.equip__items-ring2 {
+  grid-area: RingR;
+}
+.equip__items-amulet {
+  grid-area: Amulet;
+}
+.equip__items-armour {
+  grid-area: BodyArmour;
+}
+.equip__items-gloves {
+  grid-area: Gloves;
+}
+.equip__items-boots {
+  grid-area: Boots;
+}
+.equip__items-belt {
+  grid-area: Belt;
+}
+.equip__items-flask1 {
+  grid-area: flasks1;
+}
+.equip__items-flask2 {
+  grid-area: flasks2;
+}
+.equip__items-flask3 {
+  grid-area: flasks3;
+}
+.equip__items-flask4 {
+  grid-area: flasks4;
+}
+.equip__items-flask5 {
+  grid-area: flasks5;
+}
+
+.item {
+  background-color: var(--color-background-2);
+  min-height: 50px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--color-border-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/*# sourceMappingURL=style.css.map */
