@@ -1,3 +1,8 @@
 @import  "mixins" ,"utils", "globals", "media", "variables", "normalize";
 
 
+@import
+"blocks/button",
+"blocks/pomodoro",
+"blocks/timer",
+"blocks/list";

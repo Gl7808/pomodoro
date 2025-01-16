@@ -20,10 +20,13 @@
 
 body {
   font-size: clamp(16px, 1.25vw, 18px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: var(--font-family-base);
   font-weight: 400;
   line-height: 1.28;
-  background-color: var(--color-background-1);
+  background-color: var(--color-background);
   color: var(--color-light-1);
 }
 
@@ -44,40 +47,41 @@ a:hover {
 }
 
 h2, h3, h4 {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h1 {
-  font-weight: 700;
-  font-size: clamp(63px, 5.5555555556vw, 80px);
+  font-weight: 800;
+  font-size: clamp(33px, 2.7777777778vw, 40px);
+  color: var(--color-light-1);
 }
 
-h2 {
-  font-size: clamp(40px, 3.6111111111vw, 52px);
-}
-
-h3 {
-  font-size: clamp(22px, 1.875vw, 27px);
+h4 {
+  font-size: clamp(15px, 1.3888888889vw, 20px);
+  color: var(--color-light-2);
 }
 
 :root {
-  --color-light-1: #FFFFFF;
-  --color-light-2: #BCCBD6;
-  --color-accent-1: #00EAC7;
-  --color-accent-2: #0F3034;
-  --color-background-1: #111B24;
-  --color-background-2: #2F4252;
-  --color-background-3: #0F171F;
-  --color-background-4: #14202A;
-  --color-border-1: #1B2B38;
+  --color-light-1: #E4E4E7;
+  --color-light-2: #A1A1AA;
+  --color-light-3: #A1A1AA;
+  --color-background: #18181B;
+  --color-border: #27272A;
+  --color-border-2: #3F3F46;
+  --color-lime-bg: rgba(132, 204, 22, 0.1);
+  --color-lime: #84CC16;
+  --color-amber-bg: rgba(245,158,11, 0.1);
+  --color-amber: #F59E0B;
+  --color-cyan-bg: rgba(6, 182, 212, 0.1);
+  --color-cyan: #06B6D4;
   --font-family-base: "Inter", sans-serif;
   --container-width: 1280px;
   --container-padding-x: 32px;
   --section-padding-y: 256px;
-  --border-radius: 8px;
-  --border-radius-small: 2px;
-  --border-radius-button: 48px;
-  --button-height: 36px;
+  --border-radius: 12px;
+  --border-radius-small: 4px;
+  --border-radius-button: 4px;
+  --button-height: 40px;
   --input-height: 40px;
   --transition-duration: 0.3s;
 }
@@ -237,136 +241,49 @@ svg * {
     scroll-behavior: auto !important;
   }
 }
-.header__inner {
-  margin-top: 30px;
+.pomodoro__header {
+  height: 70px;
   display: flex;
   justify-content: space-between;
-}
-.header__logo {
-  font-size: 20px;
-  font-weight: 900;
-  text-shadow: 1px 1px 1px #00EAC7, 1px 1px 5px #0075ea, 1px 1px 15px #ffffff;
-}
-.header__navigation-list {
-  display: flex;
-  gap: 20px;
-}
-.header__navigation-item {
-  text-transform: uppercase;
-  font-size: 13px;
-}
-
-.section {
-  margin-top: 100px;
-}
-
-.r {
-  color: var(--color-accent-red);
-}
-
-.g {
-  color: var(--color-succsess);
-}
-
-.b {
-  color: var(--color-accent-blue);
-}
-
-.gem__list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.gem__list-item {
-  padding: 3px;
-  border: 1px solid var(--color-dark-700);
-}
-
-.title {
-  margin-bottom: 20px;
-  color: var(--color-light-2);
-}
-.title-icon {
-  color: var(--color-light-2);
-  margin-right: 10px;
-}
-
-.note__title {
-  margin-bottom: 20px;
-  color: var(--color-light-2);
-}
-.note__title-icon {
-  color: var(--color-light-2);
-  margin-right: 10px;
-}
-.note__description {
-  background-color: var(--color-background-4);
-  padding: 26px 56px 27px 56px;
-}
-
-.equip__items {
-  --col-size: 4rem;
-  --border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(8, minmax(0, var(--col-size)));
-  grid-gap: 0.5rem;
-  grid-template-areas: "Weapon Weapon . Helm Helm . Offhand Offhand" "Weapon Weapon . Helm Helm . Offhand Offhand" "Weapon Weapon . BodyArmour BodyArmour Amulet Offhand Offhand" "Weapon Weapon RingL BodyArmour BodyArmour RingR Offhand Offhand" ". Gloves Gloves BodyArmour BodyArmour Boots Boots ." ". Gloves Gloves Belt Belt Boots Boots ." ". flasks1 flasks2 flasks3 flasks4 flasks5 flasks6 ." ". flasks1 flasks2 flasks3 flasks4 flasks5 flasks6 .";
-}
-.equip__items-weapon1 {
-  grid-area: Weapon;
-}
-.equip__items-weapon2 {
-  grid-area: Offhand;
-}
-.equip__items-helmet {
-  grid-area: Helm;
-}
-.equip__items-ring1 {
-  grid-area: RingL;
-}
-.equip__items-ring2 {
-  grid-area: RingR;
-}
-.equip__items-amulet {
-  grid-area: Amulet;
-}
-.equip__items-armour {
-  grid-area: BodyArmour;
-}
-.equip__items-gloves {
-  grid-area: Gloves;
-}
-.equip__items-boots {
-  grid-area: Boots;
-}
-.equip__items-belt {
-  grid-area: Belt;
-}
-.equip__items-flask1 {
-  grid-area: flasks1;
-}
-.equip__items-flask2 {
-  grid-area: flasks2;
-}
-.equip__items-flask3 {
-  grid-area: flasks3;
-}
-.equip__items-flask4 {
-  grid-area: flasks4;
-}
-.equip__items-flask5 {
-  grid-area: flasks5;
-}
-
-.item {
-  background-color: var(--color-background-2);
-  min-height: 50px;
-  border-radius: var(--border-radius);
-  border: 2px solid var(--color-border-1);
-  display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 30px;
+  line-height: 2em;
+}
+.pomodoro__header-settings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.pomodoro__header-settings--button {
+  height: 32px;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-border);
+  color: var(--color-light-2);
+}
+.pomodoro__header-settings--button:hover {
+  background-color: var(--color-cyan);
+  color: var(--color-light-1);
+}
+.pomodoro__body {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  min-height: 600px;
+  min-width: 1120px;
+}
+
+.timer {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 24px;
+}
+
+.list {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 24px;
 }
 
 /*# sourceMappingURL=style.css.map */
