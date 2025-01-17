@@ -27,7 +27,7 @@ body {
   font-weight: 400;
   line-height: 1.28;
   background-color: var(--color-background);
-  color: var(--color-light-1);
+  color: var(--color-light-2);
 }
 
 a,
@@ -46,18 +46,30 @@ a:hover {
   color: var(--color-accent-blue);
 }
 
-h2, h3, h4 {
-  font-weight: 500;
+h1, h2, h3, h4, h5 {
+  font-weight: 800;
 }
 
 h1 {
-  font-weight: 800;
   font-size: clamp(33px, 2.7777777778vw, 40px);
   color: var(--color-light-1);
 }
 
+h3 {
+  font-weight: 700;
+  font-size: clamp(20px, 1.6666666667vw, 24px);
+  color: var(--color-light-1);
+}
+
 h4 {
-  font-size: clamp(15px, 1.3888888889vw, 20px);
+  font-weight: 700;
+  font-size: clamp(15px, 1.25vw, 18px);
+  color: var(--color-light-1);
+}
+
+h5 {
+  font-weight: 500;
+  font-size: clamp(12px, 0.9722222222vw, 14px);
   color: var(--color-light-2);
 }
 
@@ -241,6 +253,61 @@ svg * {
     scroll-behavior: auto !important;
   }
 }
+.status {
+  height: 25px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 4.5px 8px 4.5px 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.status__focus {
+  border-color: var(--color-lime);
+  color: var(--color-lime);
+  background-color: var(--color-lime-bg);
+}
+.status__pause {
+  border-color: var(--color-amber);
+  color: var(--color-amber);
+  background-color: var(--color-amber-bg);
+}
+.status__big {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+  background-color: var(--color-cyan-bg);
+}
+
+.timer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.timer__info {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.timer__info-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.timer__clock {
+  height: 224px;
+  width: 224px;
+  font-size: 64px;
+  color: var(--color-light-1);
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
 .pomodoro__header {
   height: 70px;
   display: flex;
@@ -274,10 +341,24 @@ svg * {
   min-width: 1120px;
 }
 
-.timer {
+.block {
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   padding: 24px;
+}
+.block__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 24px;
+}
+.block__header-icon {
+  height: 40px;
+  width: 40px;
+  background-color: var(--color-border);
+  padding: 10px;
+  border-radius: var(--border-radius-small);
 }
 
 .list {

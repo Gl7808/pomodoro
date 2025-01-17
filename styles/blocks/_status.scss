@@ -1,0 +1,25 @@
+.status{
+  height: 25px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 4.5px 8px 4.5px 8px;
+  font-size: 14px;
+  font-weight: 600;
+
+  &__focus{
+    border-color: var(--color-lime);
+    color: var(--color-lime);
+    background-color: var(--color-lime-bg);
+  }
+  &__pause{
+    border-color: var(--color-amber);
+    color: var(--color-amber);
+    background-color: var(--color-amber-bg);
+  }
+  &__big{
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+    background-color: var(--color-cyan-bg);
+  }
+}
