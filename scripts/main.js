@@ -17,6 +17,8 @@ let stageItemElement = Array.from(stageItem.children)
 let currentStage = 1;
 let currentStageStatus = 'Focus';
 
+let color = 0;
+
 let messageArr = [];
 let statusArr = [];
 
@@ -164,3 +166,46 @@ let clearChat = () => {
     messageBlock.innerHTML = ''
     localStorage.clear('localArray');
 }
+
+
+let colorMode = () => {
+    if (color == 1){
+        lightMode();
+        color--;
+    } else {
+        darkMode();
+        color++;
+    }
+    localStorage.setItem('colorMode', JSON.stringify(color));
+}
+
+let lightMode = () => {
+    document.documentElement.style.setProperty('--color-background', "#FAFAFA");
+    document.documentElement.style.setProperty('--color-border', "#E4E4E7");
+    document.documentElement.style.setProperty('--color-border-2', "#F4F4F5");
+    document.documentElement.style.setProperty('--color-light-1', "#27272A");
+    document.documentElement.style.setProperty('--color-light-2', "#52525B");
+    document.documentElement.style.setProperty('--color-light-3', "#71717A");
+}
+
+let darkMode = () => {
+    document.documentElement.style.setProperty('--color-background', "#18181B");
+    document.documentElement.style.setProperty('--color-border', "#27272A");
+    document.documentElement.style.setProperty('--color-border-2', "#3F3F46");
+    document.documentElement.style.setProperty('--color-light-1', "#E4E4E7");
+    document.documentElement.style.setProperty('--color-light-2', "#A1A1AA");
+    document.documentElement.style.setProperty('--color-light-3', "#71717A");
+}
+
+let checkMode = () => {
+    color = localStorage.getItem('colorMode')
+    console.log(color)
+
+    if (color == 0){
+        lightMode();
+    } else {
+        darkMode();
+    }
+}
+
+checkMode()
