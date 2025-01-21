@@ -1,0 +1,21 @@
+.messages{
+
+  &__item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &-time{
+      font-size: 9px;
+      position: relative;
+
+
+      &:after{
+        content: '';
+        position: absolute;
+        right: -7px;
+
+      }
+    }
+  }
+}

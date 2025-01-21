@@ -1,4 +1,8 @@
 .block{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   padding: 24px;
@@ -14,6 +18,68 @@
       background-color: var(--color-border);
       padding: 10px;
       border-radius: var(--border-radius-small);
+    }
+  }
+
+  &__body{
+    height: 100%;
+    max-height: 40vh;
+    margin-bottom: 10px;
+    padding: 8px;
+    overflow-y: auto;
+    font-size: 13px;
+
+
+    &::-webkit-scrollbar{
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; /* Цвет дорожки */
+      border-radius: 10px; /* Закругление углов дорожки */
+    }
+    &::-webkit-scrollbar-thumb {
+      max-height: 5px;
+      background: var(--color-cyan);
+      border-radius: 10px; /* Закругление углов ползунка */
+    }
+  }
+
+  &__input{
+    display: grid;
+    grid-template-columns: 1fr 80px 40px;
+    gap: 10px;
+    width: auto;
+    &--textfield{
+      color: var(--color-light-1);
+      padding: 8px;
+      width: 100%;
+      background-color: var(--color-border);
+      border:none;
+      border-radius: var(--border-radius-small);
+
+      &:focus{
+        outline: none;
+        color: var(--color-light-2);
+      }
+    }
+    &--submit, &--clear{
+      padding: 8px;
+      height: 40px;
+      background: var(--color-lime);
+      color: #FFF;
+      border-radius: var(--border-radius-small);
+      border:none;
+        svg{
+          scale: 1.2;
+        }
+
+      &:nth-child(3){
+        background-color: var(--color-error);
+      }
+
+      &:hover{
+        background-color: var(--color-lime-bg);
+      }
     }
   }
 }

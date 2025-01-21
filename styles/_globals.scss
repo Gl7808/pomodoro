@@ -52,3 +52,18 @@ h5{
 }
 
 
+.lime, .amber, .error, .configMessage{
+  font-weight: 800;
+  color: var(--color-light-1);
+}
+
+.lime{
+  color:var(--color-lime);
+}
+.amber{
+  color: var(--color-amber);
+}
+.error{
+  color: var(--color-error);
+}
+

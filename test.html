@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сохранение массива в localStorage</title>
+</head>
+<body>
+<input type="text" id="inputValue" placeholder="Введите значение">
+<button id="addButton">Добавить в массив</button>
+<button id="saveButton">Сохранить массив</button>
+<button id="loadButton">Загрузить массив</button>
+<div id="result"></div>
+
+<script>
+  let myArray = [];
+
+  // Функция для обновления отображения массива
+  function updateDisplay() {
+    document.getElementById('result').textContent = 'Массив: ' + myArray.join(', ');
+  }
+
+  // Добавление значения в массив
+  document.getElementById('addButton').onclick = function() {
+    const value = document.getElementById('inputValue').value;
+    if (value) {
+      myArray.push(value);
+      updateDisplay();
+      document.getElementById('inputValue').value = ''; // Очищаем поле ввода
+    }
+  };
+
+  // Сохранение массива в localStorage
+  document.getElementById('saveButton').onclick = function() {
+    localStorage.setItem('myArray', JSON.stringify(myArray));
+    alert('Массив сохранен в localStorage!');
+  };
+
+  // Загрузка массива из localStorage
+  document.getElementById('loadButton').onclick = function() {
+    const storedArray = localStorage.getItem('myArray');
+    if (storedArray) {
+      myArray = JSON.parse(storedArray);
+      updateDisplay();
+      alert('Массив загружен из localStorage!');
+    } else {
+      alert('Нет сохраненного массива в localStorage.');
+    }
+  };
+</script>
+</body>
+</html>
